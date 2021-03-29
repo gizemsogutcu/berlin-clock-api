@@ -4,7 +4,7 @@ import com.api.berlinclock.core.APIResponse;
 import com.api.berlinclock.model.BerlinClockConstants;
 import com.api.berlinclock.service.BerlinClockService;
 import org.springframework.stereotype.Service;
-
+import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -43,12 +43,12 @@ public class BerlinClockServiceImpl implements BerlinClockService {
             seconds = Integer.parseInt(times[2]);
         }
         catch(Exception ex){
-            throw new Exception(ex.getMessage());
+            throw new ParseException(ex.getMessage(), 0);
         }
         if (hours < 0 || hours > 24)
-            throw new IllegalArgumentException("Hour is not correct format.");
+            throw new IllegalArgumentException("Hours is not correct format.");
         if (minutes < 0 || minutes > 59)
-            throw new IllegalArgumentException("Minute is not correct format.");
+            throw new IllegalArgumentException("Minutes is not correct format.");
         if (seconds < 0 || seconds > 59)
             throw new IllegalArgumentException("Seconds is not correct format.");
     }
