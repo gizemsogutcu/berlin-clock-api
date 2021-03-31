@@ -1,0 +1,11 @@
+version: '3'
+services:
+  berlin-clock-api:
+    image: berlin-clock-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/berlin-clock-api
+    ports:
+      - "8080:8080"
